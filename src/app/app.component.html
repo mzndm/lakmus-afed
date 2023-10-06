@@ -1,0 +1,60 @@
+<div class="container">
+  <form class="form" [formGroup]="form">
+    <div class="form__group">
+      <label class="form__label">Дата:</label>
+      <mat-form-field>
+        <input class="form__input" matInput [matDatepicker]="picker" placeholder="__.__.____" disabled>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form__group">
+      <h3 class="form__title">Діагнози за ІСРС-2</h3>
+
+      <div class="list">
+        <div class="list__item"
+             formArrayName="conditions"
+             *ngFor="let item of conditions.controls; let i = index;">
+          <ng-container [formGroupName]="i">
+            <mat-form-field>
+              <input type="text" matInput formControlName="name" [matAutocomplete]="auto">
+
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredDiagnoses[i] | async"
+                            (click)="selectOption(option, i)"
+                            [value]="option.code + ' ' + option.name">
+                  {{option.code}} {{option.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput formControlName="notes" placeholder="коментар">
+            </mat-form-field>
+          </ng-container>
+
+        </div>
+
+        <div class="list__footer">
+          <button class="form__button" mat-button
+                  (click)="addCondition($event)"> + додати ще</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__group">
+      <button class="form__button" mat-stroked-button
+              (click)="generateData($event)">
+        Сформувати JSON
+      </button>
+    </div>
+
+    <div class="form__footer">
+      <h4 class="form__title">JSON:</h4>
+      <pre>
+        {{output | json}}
+      </pre>
+    </div>
+  </form>
+</div>
