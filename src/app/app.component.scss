@@ -1,0 +1,72 @@
+@import "../assets/styles/variables";
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form {
+  width: 600px;
+  padding: 20px;
+  border: 1px solid $black;
+  border-radius: 8px;
+
+  &__group {
+    padding-bottom: 16px;
+  }
+
+  &__field {
+    width: 50%;
+  }
+
+  &__datepicker {
+    width: 200px;
+  }
+
+  &__label {
+    font: {
+      size: 20px;
+      weight: bold;
+    }
+    padding-right: 8px;
+  }
+
+  &__input {
+    background-color: transparent;
+  }
+
+  &__submit {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: $cyan;
+    background: none;
+    border: 1px solid $cyan;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($cyan, 0.05);
+    }
+
+    &:focus {
+      background-color: rgba($cyan, 0.1);
+    }
+  }
+
+  &__output {
+    max-height: 100px;
+    color: $grey;
+    border: 1px solid $grey;
+    overflow-y: scroll;
+    margin: 0;
+  }
+}
+
+.list {
+  &__item {
+    display: flex;
+    gap: 16px;
+  }
+}

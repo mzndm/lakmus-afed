@@ -26,7 +26,7 @@
              formArrayName="conditions"
              *ngFor="let item of conditions.controls; let i = index;">
           <ng-container [formGroupName]="i">
-            <mat-form-field>
+            <mat-form-field class="form__field">
               <input type="text" matInput formControlName="name" [matAutocomplete]="auto">
 
               <mat-autocomplete #auto="matAutocomplete">
@@ -38,7 +38,7 @@
               </mat-autocomplete>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field class="form__field">
               <input matInput formControlName="notes" placeholder="коментар">
             </mat-form-field>
           </ng-container>
@@ -53,15 +53,14 @@
     </div>
 
     <div class="form__group">
-      <button class="form__button" mat-stroked-button
-              (click)="generateData($event)">
+      <button class="form__button form__submit" (click)="generateData($event)">
         Сформувати JSON
       </button>
     </div>
 
-    <div class="form__footer">
+    <div class="form__footer" *ngIf="output">
       <h4 class="form__title">JSON:</h4>
-      <pre>
+      <pre class="form__output">
         {{output | json}}
       </pre>
     </div>

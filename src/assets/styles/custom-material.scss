@@ -1,0 +1,40 @@
+@import "variables";
+
+.form {
+  &__button {
+    .mdc-button__label {
+      color: $cyan;
+    }
+  }
+
+  .mat-mdc-form-field {
+    height: 48px;
+  }
+
+  .mat-mdc-form-field-flex {
+    height: 48px;
+  }
+
+  .mdc-text-field--filled {
+    border: 1px solid $black;
+    border-radius: 8px;
+
+    &:not(.mdc-text-field--disabled) {
+      background-color: transparent;
+    }
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  .mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled) {
+    border: 1px solid var(--mdc-filled-text-field-error-active-indicator-color);
+
+    .mdc-line-ripple {
+      display: none;
+    }
+  }
+
+}
+
