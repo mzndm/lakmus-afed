@@ -1,9 +1,18 @@
 <div class="container">
   <form class="form" [formGroup]="form">
-    <div class="form__group">
+    <div class="form__group" formGroupName="encounter">
       <label class="form__label">Дата:</label>
-      <mat-form-field>
-        <input class="form__input" matInput [matDatepicker]="picker" placeholder="__.__.____" disabled>
+      <mat-form-field class="form__field form__datepicker">
+        <input class="form__input" formControlName="date" matInput placeholder="__.__.____"
+               [min]="minDate" [matDatepicker]="picker">
+
+        <mat-error class="form__error" *ngIf="encounterDate.hasError('matDatepickerMin')">
+          Дата не може бути в минулому
+        </mat-error>
+        <mat-error class="form__error" *ngIf="encounterDate.hasError('matDatepickerParse')">
+          Введіть коректну дату
+        </mat-error>
+
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker disabled="false"></mat-datepicker>
       </mat-form-field>
