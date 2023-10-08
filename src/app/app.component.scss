@@ -18,6 +18,18 @@
 
   &__field {
     width: 50%;
+
+    &_select {
+      position: relative;
+
+      &:after {
+        content: '▼';
+        position: absolute;
+        right: 6px;
+        top: 16px;
+        color: $grey;
+      }
+    }
   }
 
   &__datepicker {

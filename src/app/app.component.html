@@ -26,8 +26,9 @@
              formArrayName="conditions"
              *ngFor="let item of conditions.controls; let i = index;">
           <ng-container [formGroupName]="i">
-            <mat-form-field class="form__field">
-              <input type="text" matInput formControlName="name" [matAutocomplete]="auto">
+            <mat-form-field class="form__field form__field_select">
+              <input class="form__input" type="text" matInput
+                     formControlName="name" [matAutocomplete]="auto">
 
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let option of filteredDiagnoses[i] | async"
@@ -42,19 +43,19 @@
               <input matInput formControlName="notes" placeholder="коментар">
             </mat-form-field>
           </ng-container>
-
         </div>
 
         <div class="list__footer">
-          <button class="form__button" mat-button
-                  (click)="addCondition($event)"> + додати ще</button>
+          <button class="form__button" mat-button (click)="addCondition($event)">
+            <span>+ додати {{ conditions.value?.length ? 'ще' : ''}}</span>
+          </button>
         </div>
       </div>
     </div>
 
     <div class="form__group">
       <button class="form__button form__submit" (click)="generateData($event)">
-        Сформувати JSON
+        <span>Сформувати JSON</span>
       </button>
     </div>
 

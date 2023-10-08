@@ -7,6 +7,14 @@
     }
   }
 
+  &__field {
+    &_select {
+      .mat-mdc-text-field-wrapper {
+        padding-right: 24px;
+      }
+    }
+  }
+
   .mat-mdc-form-field {
     height: 48px;
   }
